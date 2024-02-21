@@ -1,6 +1,6 @@
-package gestionbiblioteca;
+package gestionbiblioteca.Main;
 
-public class GestionBiblioteca {
+public class GestionBibliotecaMain {
 
   
     public static void main(String[] args) {
