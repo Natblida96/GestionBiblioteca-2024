@@ -1,12 +1,13 @@
 package gestionbiblioteca.Entidades;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Multas {
 
-    private int idUnicoDeLaMulta; 
+    private int idUnicoDeLaMulta;
     private int idUsuarioMultado;
-    private int montoQueDebe; 
+    private int montoQueDebe;
     private LocalDate fechaDeMulta;
     private Boolean estadoDelPago;
     private String dniUsuario;
@@ -78,16 +79,15 @@ public class Multas {
     public void setDniUsuario(String dniUsuario) {
         this.dniUsuario = dniUsuario;
     }
-    
+
     @Override
     public String toString() {
-        return "ID Multa " + idUnicoDeLaMulta + 
-               ", ID De Usuario Multado " + idUsuarioMultado + 
-               ", Monto Que Debe " + montoQueDebe + 
-               ", fecha De La Multa " + fechaDeMulta +
-               ", Estado Del Pago " + estadoDelPago + 
-               ", Dni Del Usuario " + dniUsuario;
+        return "ID Multa " + idUnicoDeLaMulta
+                + ", ID De Usuario Multado " + idUsuarioMultado
+                + ", Monto Que Debe " + montoQueDebe
+                + ", Fecha De La Multa " + fechaDeMulta 
+                + ", Estado Del Pago " + estadoDelPago
+                + ", DNI Del Usuario " + dniUsuario;
     }
-    
-    
+
 }

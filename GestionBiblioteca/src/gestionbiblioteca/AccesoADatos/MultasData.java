@@ -54,8 +54,20 @@ public class MultasData {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, multa.getIdUsuarioMultado());
             ps.setInt(2, multa.getMontoQueDebe());
-            ps.setDate(3, java.sql.Date.valueOf(multa.getFechaDeMulta()));
-            ps.setBoolean(4, multa.getEstadoDelPago());
+
+            // Verificar si fechaDeMulta es null antes de convertirlo
+            if (multa.getFechaDeMulta() != null) {
+                ps.setDate(3, java.sql.Date.valueOf(multa.getFechaDeMulta()));
+            } else {
+                ps.setNull(3, java.sql.Types.DATE); // Establecer el campo como null en la base de datos si fechaDeMulta es null
+            }
+
+            if (multa.getEstadoDelPago() != null) {
+                ps.setBoolean(4, multa.getEstadoDelPago());
+            } else {
+                ps.setNull(4, java.sql.Types.BOOLEAN); // Establecer el campo como null en la base de datos si estadoDelPago es null
+            }
+
             ps.setString(5, multa.getDniUsuario());
             ps.setInt(6, multa.getIdUnicoDeLaMulta());
 
@@ -75,22 +87,19 @@ public class MultasData {
 
     // Método para eliminar una multa de la base de datos
     public void eliminarMulta(int idUnicoDeLaMulta) {
-        String SQL = "DELETE FROM multas WHERE idUnicoDeLaMulta = ?";
         try {
+            String SQL = "UPDATE multas SET estadoDelPago = false WHERE idUnicoDeLaMulta = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1, idUnicoDeLaMulta);
-
-            int filasEliminadas = ps.executeUpdate();
-            if (filasEliminadas > 0) {
-                JOptionPane.showMessageDialog(null, "Multa eliminada exitosamente");
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, "Se marcó la multa como inactiva.");
             } else {
-                JOptionPane.showMessageDialog(null, "No se encontró la multa con el ID especificado");
+                JOptionPane.showMessageDialog(null, "No se encontró una multa con este ID.");
             }
-
             ps.close();
-
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar la multa: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Multas: " + e.getMessage());
         }
     }
 

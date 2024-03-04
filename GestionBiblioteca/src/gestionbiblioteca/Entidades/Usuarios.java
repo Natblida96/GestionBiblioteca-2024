@@ -1,32 +1,35 @@
 package gestionbiblioteca.Entidades;
 
 public class Usuarios {
-    
+
     private int idUsuario;
     private String nombre;
     private String apellido;
     private int dni;
     private String email;
     private String contrasenia;
+    private Boolean estado;
 
     public Usuarios() {
     }
 
-    public Usuarios(String nombre, String apellido, int dni, String email, String contrasenia) {
+    public Usuarios(String nombre, String apellido, int dni, String email, String contrasenia, Boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.contrasenia = contrasenia;
+        this.estado = estado;
     }
 
-    public Usuarios(int idUsuario, String nombre, String apellido, int dni, String email, String contrasenia) {
+    public Usuarios(int idUsuario, String nombre, String apellido, int dni, String email, String contrasenia, Boolean estado) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.contrasenia = contrasenia;
+        this.estado = estado;
     }
 
     public int getIdUsuario() {
@@ -69,22 +72,31 @@ public class Usuarios {
         this.email = email;
     }
 
-    public String getContraseña() {
+    public String getContrasenia() {
         return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
+    public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "ID Usuario " + idUsuario + 
-               ", nombre " + nombre + 
-               ", apellido " + apellido + 
-               ", dni " + dni + 
-               ", email " + email + 
-               ", contraseña=" + contrasenia + '}';
+        return "ID Usuario " + idUsuario
+                + ", Nombre " + nombre
+                + ", Apellido " + apellido
+                + ", DNI " + dni
+                + ", Email " + email
+                + ", Contraseña " + contrasenia
+                + ", Estado " + estado;
+
     }
-                                   
 }
