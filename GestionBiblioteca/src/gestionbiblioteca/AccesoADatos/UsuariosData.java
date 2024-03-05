@@ -15,8 +15,7 @@ public class UsuariosData {
     private Connection con = null;
 
     public UsuariosData() {
-        con = (Connection) ConexionData.getConexion();
-
+        con = ConexionData.getConexion();
     }
 
 // Crear (Guardar un nuevo usuario)
@@ -106,7 +105,7 @@ public class UsuariosData {
     }
 
 //Eliminar (Cambiar estado de un usuario a inactivo)    
-    public void cambiarEstadoUsuario(int idUsuario, boolean estado) {
+    public void eliminarUsuario(int idUsuario, boolean estado) {
         try {
             String SQL = "UPDATE usuarios SET estado = ? WHERE idUsuario = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
@@ -128,7 +127,7 @@ public class UsuariosData {
         }
     }
 
-//Buscar usuarios por su DNI en la base de datos    
+//Buscar usuarios por su DNI en la base de datos. 
     public Usuarios buscarUsuarioPorDNI(int dni) {
         Usuarios usuario = null;
         try {
@@ -158,7 +157,7 @@ public class UsuariosData {
         return usuario;
     }
 
-//Buscar usuarios por su ID en la base de datos  
+//Buscar usuarios por su ID en la base de datos.
     public Usuarios buscarUsuarioPorId(int idUsuario) {
         Usuarios usuario = null;
         try {
@@ -187,5 +186,30 @@ public class UsuariosData {
         }
         return usuario;
     }
-
+        
+// Buscar usuarios por su Nombre en la base de datos.
+    public Usuarios buscarUsuarioPorNombre(String nombreUsuario) {
+        Usuarios usuario = null;
+        String sql = "SELECT * FROM usuarios WHERE nombre = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreUsuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                // Si hay resultados, crear un objeto Usuarios con los datos obtenidos
+                usuario = new Usuarios();
+                usuario.setIdUsuario(rs.getInt("idUsuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setDni(rs.getInt("dni"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setContrasenia(rs.getString("contrasenia"));
+                usuario.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar usuario por nombre: " + ex.getMessage());
+        }
+        return usuario;
+    }
 }

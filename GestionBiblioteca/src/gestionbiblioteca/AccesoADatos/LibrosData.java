@@ -15,8 +15,7 @@ public class LibrosData {
     private Connection con = null;
 
     public LibrosData() {
-        con = (Connection) ConexionData.getConexion();
-
+        con = ConexionData.getConexion();
     }
 
 //Un método para insertar un nuevo registro de libro en la base de datos.

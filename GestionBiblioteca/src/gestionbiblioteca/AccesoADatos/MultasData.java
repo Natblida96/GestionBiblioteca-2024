@@ -16,8 +16,7 @@ public class MultasData {
     private Connection con = null;
 
     public MultasData() {
-        con = (Connection) ConexionData.getConexion();
-
+        con = ConexionData.getConexion();
     }
 
     // Método para guardar una nueva multa en la base de datos
