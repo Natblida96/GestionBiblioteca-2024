@@ -1,26 +1,9 @@
 package gestionbiblioteca.Vistas;
 
-import gestionbiblioteca.AccesoADatos.LibrosData;
-import gestionbiblioteca.AccesoADatos.MultasData;
-import gestionbiblioteca.AccesoADatos.PrestamosData;
-import gestionbiblioteca.AccesoADatos.UsuariosData;
+public class BibliotecaEscritorio extends javax.swing.JFrame {
 
-public class DisenioGestionBiblioteca extends javax.swing.JFrame {
-
-    private final LibrosData lb;
-    private final MultasData md;
-    private final PrestamosData pd;
-    private final UsuariosData ud;
-
-    public DisenioGestionBiblioteca() {
+    public BibliotecaEscritorio() {
         initComponents();
-        setTitle("Sistema de Gestión de la Biblioteca del Tango y la Pluma - Argentina.");
-
-        lb = new LibrosData();
-        md = new MultasData();
-        pd = new PrestamosData();
-        ud = new UsuariosData();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -28,43 +11,46 @@ public class DisenioGestionBiblioteca extends javax.swing.JFrame {
     private void initComponents() {
 
         JDPEscritorio = new javax.swing.JDesktopPane();
+        Fondito = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        JMIListaDeUsuarios = new javax.swing.JMenuItem();
         JMICargaYBajaUsuarios = new javax.swing.JMenuItem();
         JMIModificacionDeUsuarios = new javax.swing.JMenuItem();
+        JMIListaDeUsuarios = new javax.swing.JMenuItem();
         JMLibros = new javax.swing.JMenu();
         JMIListaDeLibros = new javax.swing.JMenuItem();
         JMIModificarLibros = new javax.swing.JMenuItem();
         JMICargaBajaDeLibros = new javax.swing.JMenuItem();
         JMMultas = new javax.swing.JMenu();
+        JMIUsuariosQueAdeudan = new javax.swing.JMenuItem();
         JMPrestamos = new javax.swing.JMenu();
+        JMILibrosPrestadosDevueltos = new javax.swing.JMenuItem();
         JMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Fondito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionbiblioteca/Imagenes/tango y pluma.jpg"))); // NOI18N
+
+        JDPEscritorio.setLayer(Fondito, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout JDPEscritorioLayout = new javax.swing.GroupLayout(JDPEscritorio);
         JDPEscritorio.setLayout(JDPEscritorioLayout);
         JDPEscritorioLayout.setHorizontalGroup(
             JDPEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addComponent(Fondito, javax.swing.GroupLayout.PREFERRED_SIZE, 845, Short.MAX_VALUE)
         );
         JDPEscritorioLayout.setVerticalGroup(
             JDPEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addComponent(Fondito, javax.swing.GroupLayout.PREFERRED_SIZE, 745, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(295, 32768));
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(295, 23));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(295, 23));
 
         jMenu1.setText("Usuarios");
 
-        JMIListaDeUsuarios.setText("Lista de Usuarios");
-        JMIListaDeUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMIListaDeUsuariosActionPerformed(evt);
-            }
-        });
-        jMenu1.add(JMIListaDeUsuarios);
-
-        JMICargaYBajaUsuarios.setText("Carga y Baja de Usuarios (Eliminacion)");
+        JMICargaYBajaUsuarios.setText("Carga de Usuarios");
         JMICargaYBajaUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMICargaYBajaUsuariosActionPerformed(evt);
@@ -79,6 +65,14 @@ public class DisenioGestionBiblioteca extends javax.swing.JFrame {
             }
         });
         jMenu1.add(JMIModificacionDeUsuarios);
+
+        JMIListaDeUsuarios.setText("Lista de Usuarios");
+        JMIListaDeUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMIListaDeUsuariosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(JMIListaDeUsuarios);
 
         jMenuBar1.add(jMenu1);
 
@@ -100,7 +94,7 @@ public class DisenioGestionBiblioteca extends javax.swing.JFrame {
         });
         JMLibros.add(JMIModificarLibros);
 
-        JMICargaBajaDeLibros.setText("Carga/Eliminacion de Libros");
+        JMICargaBajaDeLibros.setText("Carga de Libros");
         JMICargaBajaDeLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMICargaBajaDeLibrosActionPerformed(evt);
@@ -111,12 +105,35 @@ public class DisenioGestionBiblioteca extends javax.swing.JFrame {
         jMenuBar1.add(JMLibros);
 
         JMMultas.setText("Multas");
+
+        JMIUsuariosQueAdeudan.setText("Usuarios Que Adeudan");
+        JMIUsuariosQueAdeudan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMIUsuariosQueAdeudanActionPerformed(evt);
+            }
+        });
+        JMMultas.add(JMIUsuariosQueAdeudan);
+
         jMenuBar1.add(JMMultas);
 
         JMPrestamos.setText("Prestamos");
+
+        JMILibrosPrestadosDevueltos.setText("Libros Prestados / Devueltos");
+        JMILibrosPrestadosDevueltos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMILibrosPrestadosDevueltosActionPerformed(evt);
+            }
+        });
+        JMPrestamos.add(JMILibrosPrestadosDevueltos);
+
         jMenuBar1.add(JMPrestamos);
 
         JMSalir.setText("Salir");
+        JMSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JMSalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(JMSalir);
 
         setJMenuBar(jMenuBar1);
@@ -134,102 +151,59 @@ public class DisenioGestionBiblioteca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//
-//
-//
-//
-//
-//
-//
-//------------USUARIOS----------
-    private void JMIListaDeUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIListaDeUsuariosActionPerformed
-
-        JDPEscritorio.removeAll();
-        JDPEscritorio.repaint();
-        //cambiarfondo();
-        UsuarioListaDeUsuarios ulu = new UsuarioListaDeUsuarios();
-        ulu.setVisible(true);
-        JDPEscritorio.add(ulu);
-        JDPEscritorio.moveToFront(ulu);
-
-    }//GEN-LAST:event_JMIListaDeUsuariosActionPerformed
 
     private void JMICargaYBajaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMICargaYBajaUsuariosActionPerformed
-        JDPEscritorio.removeAll();
-        JDPEscritorio.repaint();
-        UsuariosCargaYBajaDeUsuariosEliminacion cbe = new UsuariosCargaYBajaDeUsuariosEliminacion();
-        cbe.setVisible(true);
+        UsuariosCargaDeUsuarios cbe = new UsuariosCargaDeUsuarios();
         JDPEscritorio.add(cbe);
-        JDPEscritorio.moveToFront(cbe);
-
+        cbe.setVisible(true);
     }//GEN-LAST:event_JMICargaYBajaUsuariosActionPerformed
 
     private void JMIModificacionDeUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIModificacionDeUsuariosActionPerformed
-        JDPEscritorio.removeAll();
-        JDPEscritorio.repaint();
         UsuarioModificacionDeUsuarios umu = new UsuarioModificacionDeUsuarios();
-        umu.setVisible(true);
         JDPEscritorio.add(umu);
-        JDPEscritorio.moveToFront(umu);
-
+        umu.setVisible(true);
     }//GEN-LAST:event_JMIModificacionDeUsuariosActionPerformed
-//
-//
-//
-//
-//
-//
-//
-//---------------LIBROS--------------
+
+    private void JMIListaDeUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIListaDeUsuariosActionPerformed
+        UsuarioListaDeUsuarios ulu = new UsuarioListaDeUsuarios();
+        JDPEscritorio.add(ulu);
+        ulu.setVisible(true);
+    }//GEN-LAST:event_JMIListaDeUsuariosActionPerformed
+
     private void JMIListaDeLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIListaDeLibrosActionPerformed
-        
-        
-        
-        
-        
-        
+       LibrosListaDeLibrosCargados ldlc = new LibrosListaDeLibrosCargados();
+        JDPEscritorio.add(ldlc);
+        ldlc.setVisible(true);
     }//GEN-LAST:event_JMIListaDeLibrosActionPerformed
 
+    private void JMIModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIModificarLibrosActionPerformed
+        LibrosModificarLibrosCargados mlc = new LibrosModificarLibrosCargados();
+        JDPEscritorio.add(mlc);
+        mlc.setVisible(true);
+    }//GEN-LAST:event_JMIModificarLibrosActionPerformed
+
     private void JMICargaBajaDeLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMICargaBajaDeLibrosActionPerformed
-        
-        
-        
-        
-        
+        LibrosCargaDeLibros cdl = new LibrosCargaDeLibros();
+        JDPEscritorio.add(cdl);
+        cdl.setVisible(true);
     }//GEN-LAST:event_JMICargaBajaDeLibrosActionPerformed
 
-    private void JMIModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIModificarLibrosActionPerformed
-       
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_JMIModificarLibrosActionPerformed
-//
-//
-//
-//
-//
-//
-//
-//---------------PRESTAMOS--------------
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private void JMIUsuariosQueAdeudanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIUsuariosQueAdeudanActionPerformed
+        MultasUsuariosQueAdeudan mucd = new MultasUsuariosQueAdeudan();
+        JDPEscritorio.add(mucd);
+        mucd.setVisible(true);
+    }//GEN-LAST:event_JMIUsuariosQueAdeudanActionPerformed
+
+    private void JMILibrosPrestadosDevueltosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMILibrosPrestadosDevueltosActionPerformed
+        PrestamosLibrosPrestadosDevueltos plpd = new PrestamosLibrosPrestadosDevueltos();
+        JDPEscritorio.add(plpd);
+        plpd.setVisible(true);
+    }//GEN-LAST:event_JMILibrosPrestadosDevueltosActionPerformed
+//pa salir
+    private void JMSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JMSalirMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_JMSalirMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -241,43 +215,38 @@ public class DisenioGestionBiblioteca extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DisenioGestionBiblioteca.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(BibliotecaEscritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DisenioGestionBiblioteca.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(BibliotecaEscritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DisenioGestionBiblioteca.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(BibliotecaEscritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DisenioGestionBiblioteca.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BibliotecaEscritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DisenioGestionBiblioteca().setVisible(true);
+                new BibliotecaEscritorio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondito;
     private javax.swing.JDesktopPane JDPEscritorio;
     private javax.swing.JMenuItem JMICargaBajaDeLibros;
     private javax.swing.JMenuItem JMICargaYBajaUsuarios;
+    private javax.swing.JMenuItem JMILibrosPrestadosDevueltos;
     private javax.swing.JMenuItem JMIListaDeLibros;
     private javax.swing.JMenuItem JMIListaDeUsuarios;
     private javax.swing.JMenuItem JMIModificacionDeUsuarios;
     private javax.swing.JMenuItem JMIModificarLibros;
+    private javax.swing.JMenuItem JMIUsuariosQueAdeudan;
     private javax.swing.JMenu JMLibros;
     private javax.swing.JMenu JMMultas;
     private javax.swing.JMenu JMPrestamos;

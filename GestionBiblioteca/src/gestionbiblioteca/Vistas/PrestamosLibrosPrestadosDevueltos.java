@@ -8,12 +8,12 @@ package gestionbiblioteca.Vistas;
  *
  * @author lucia
  */
-public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
+public class PrestamosLibrosPrestadosDevueltos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form UsuariosInicioDeSesion
      */
-    public UsuarioListaDeUsuarios() {
+    public PrestamosLibrosPrestadosDevueltos() {
         initComponents();
     }
 
@@ -27,18 +27,18 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTListaDeUsuariosActivosInactivos = new javax.swing.JTable();
-        JRBUsuariosInactivos = new javax.swing.JRadioButton();
-        JRBUsuariosActivos = new javax.swing.JRadioButton();
+        JTLibrosPrestadosDevueltos = new javax.swing.JTable();
+        JRBLibrosDevueltos = new javax.swing.JRadioButton();
+        JRBLibrosPrestados = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         JBSalir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Lista de Usuarios");
+        setTitle("Libros Prestados - Devueltos");
 
-        JTListaDeUsuariosActivosInactivos.setModel(new javax.swing.table.DefaultTableModel(
+        JTLibrosPrestadosDevueltos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,13 +49,13 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(JTListaDeUsuariosActivosInactivos);
+        jScrollPane1.setViewportView(JTLibrosPrestadosDevueltos);
 
-        JRBUsuariosInactivos.setText("Usuarios Inactivos");
+        JRBLibrosDevueltos.setText("Libros Devueltos");
 
-        JRBUsuariosActivos.setText("Usuarios Activos");
+        JRBLibrosPrestados.setText("Libros Prestados");
 
-        jLabel1.setText("COMO REVISARBRIGADASVIEW");
+        jLabel1.setText("COMO REVISARBRIGADASVIEW x2");
 
         JBSalir.setText("Salir");
 
@@ -65,31 +65,35 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JBSalir)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JRBUsuariosActivos)
-                            .addGap(221, 221, 221)
-                            .addComponent(jLabel1))
-                        .addComponent(JRBUsuariosInactivos)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JRBLibrosPrestados)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JRBLibrosDevueltos)
+                                .addGap(132, 132, 132)
+                                .addComponent(jLabel1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(JBSalir)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 33, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
+                .addComponent(JRBLibrosPrestados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JRBUsuariosActivos)
+                    .addComponent(JRBLibrosDevueltos)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JRBUsuariosInactivos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(JBSalir)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,9 +102,9 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBSalir;
-    private javax.swing.JRadioButton JRBUsuariosActivos;
-    private javax.swing.JRadioButton JRBUsuariosInactivos;
-    private javax.swing.JTable JTListaDeUsuariosActivosInactivos;
+    private javax.swing.JRadioButton JRBLibrosDevueltos;
+    private javax.swing.JRadioButton JRBLibrosPrestados;
+    private javax.swing.JTable JTLibrosPrestadosDevueltos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -27,7 +27,7 @@ public class UsuariosData {
             ps.setString(2, usuario.getApellido());
             ps.setInt(3, usuario.getDni());
             ps.setString(4, usuario.getEmail());
-            ps.setString(5, usuario.getContrasenia());
+//          ps.setString(5, usuario.getContrasenia());
             ps.setBoolean(6, usuario.getEstado());
 
             ps.executeUpdate();
@@ -63,7 +63,7 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setContrasenia(rs.getString("contrasenia"));
+//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
@@ -87,7 +87,7 @@ public class UsuariosData {
             ps.setString(2, usuario.getApellido());
             ps.setInt(3, usuario.getDni());
             ps.setString(4, usuario.getEmail());
-            ps.setString(5, usuario.getContrasenia());
+//          ps.setString(5, usuario.getContrasenia());
             ps.setBoolean(6, usuario.getEstado());
             ps.setInt(7, usuario.getIdUsuario());
 
@@ -143,7 +143,7 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setContrasenia(rs.getString("contrasenia"));
+//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este DNI.");
@@ -173,7 +173,7 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setContrasenia(rs.getString("contrasenia"));
+//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
@@ -203,7 +203,7 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setContrasenia(rs.getString("contrasenia"));
+//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
             }
             ps.close();

@@ -27,7 +27,7 @@ public class PrestamosData {
             ps.setInt(2, prestamo.getIdUsuarioPresta());
             ps.setDate(3, java.sql.Date.valueOf(prestamo.getFechaDelPrestamo()));
 
-            //
+            //para que pueda o no ser null!!
             if (prestamo.getFechaDeDevolucion() != null) {
                 ps.setDate(4, java.sql.Date.valueOf(prestamo.getFechaDeDevolucion()));
             } else {

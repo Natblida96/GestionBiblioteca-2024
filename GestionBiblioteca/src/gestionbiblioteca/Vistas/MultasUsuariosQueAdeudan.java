@@ -8,12 +8,12 @@ package gestionbiblioteca.Vistas;
  *
  * @author lucia
  */
-public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
+public class MultasUsuariosQueAdeudan extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form UsuariosInicioDeSesion
      */
-    public UsuarioListaDeUsuarios() {
+    public MultasUsuariosQueAdeudan() {
         initComponents();
     }
 
@@ -27,18 +27,15 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTListaDeUsuariosActivosInactivos = new javax.swing.JTable();
-        JRBUsuariosInactivos = new javax.swing.JRadioButton();
-        JRBUsuariosActivos = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
+        JTListaDeUsuariosQueAdeudan = new javax.swing.JTable();
         JBSalir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Lista de Usuarios");
+        setTitle("Lista de Usuarios que Adeudan");
 
-        JTListaDeUsuariosActivosInactivos.setModel(new javax.swing.table.DefaultTableModel(
+        JTListaDeUsuariosQueAdeudan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,13 +46,7 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(JTListaDeUsuariosActivosInactivos);
-
-        JRBUsuariosInactivos.setText("Usuarios Inactivos");
-
-        JRBUsuariosActivos.setText("Usuarios Activos");
-
-        jLabel1.setText("COMO REVISARBRIGADASVIEW");
+        jScrollPane1.setViewportView(JTListaDeUsuariosQueAdeudan);
 
         JBSalir.setText("Salir");
 
@@ -64,32 +55,20 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(JBSalir)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(JRBUsuariosActivos)
-                            .addGap(221, 221, 221)
-                            .addComponent(jLabel1))
-                        .addComponent(JRBUsuariosInactivos)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JRBUsuariosActivos)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(JRBUsuariosInactivos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(JBSalir)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,10 +77,7 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBSalir;
-    private javax.swing.JRadioButton JRBUsuariosActivos;
-    private javax.swing.JRadioButton JRBUsuariosInactivos;
-    private javax.swing.JTable JTListaDeUsuariosActivosInactivos;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTable JTListaDeUsuariosQueAdeudan;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

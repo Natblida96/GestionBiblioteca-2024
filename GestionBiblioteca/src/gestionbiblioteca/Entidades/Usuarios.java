@@ -7,7 +7,7 @@ public class Usuarios {
     private String apellido;
     private int dni;
     private String email;
-    private String contrasenia;
+//    private String contrasenia;
     private Boolean estado;
 
     public Usuarios() {
@@ -18,7 +18,7 @@ public class Usuarios {
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
-        this.contrasenia = contrasenia;
+//        this.contrasenia = contrasenia;
         this.estado = estado;
     }
 
@@ -28,7 +28,7 @@ public class Usuarios {
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
-        this.contrasenia = contrasenia;
+//      this.contrasenia = contrasenia;
         this.estado = estado;
     }
 
@@ -72,14 +72,13 @@ public class Usuarios {
         this.email = email;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
+//    public String getContrasenia() {
+//        return contrasenia;
+//    }
+//
+//    public void setContrasenia(String contrasenia) {
+//        this.contrasenia = contrasenia;
+//    }
     public Boolean getEstado() {
         return estado;
     }
@@ -95,8 +94,8 @@ public class Usuarios {
                 + ", Apellido " + apellido
                 + ", DNI " + dni
                 + ", Email " + email
-                + ", Contraseña " + contrasenia
                 + ", Estado " + estado;
+        //       + ", Contraseña " + contrasenia
 
     }
 }
