@@ -47,35 +47,33 @@ public class UsuariosData {
 
     }
 
-// Leer (Buscar un usuario por ID)
     public Usuarios buscarUsuarioPorID(int idUsuario) {
-        Usuarios usuario = null;
-        try {
-            String SQL = "SELECT * FROM usuarios WHERE idUsuario = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, idUsuario);
-            ResultSet rs = ps.executeQuery();
+    Usuarios usuario = null;
+    try {
+        String SQL = "SELECT * FROM usuarios WHERE idUsuario = ?";
+        PreparedStatement ps = con.prepareStatement(SQL);
+        ps.setInt(1, idUsuario);
+        ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
-                usuario = new Usuarios();
-                usuario.setIdUsuario(rs.getInt("idUsuario"));
-                usuario.setNombre(rs.getString("nombre"));
-                usuario.setApellido(rs.getString("apellido"));
-                usuario.setDni(rs.getInt("dni"));
-                usuario.setEmail(rs.getString("email"));
-                usuario.setEstado(rs.getBoolean("estado"));
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
-            }
-
-            ps.close();
-            rs.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al buscar el usuario: " + e.getMessage());
+        if (rs.next()) {
+            usuario = new Usuarios();
+            // No establecemos el ID del usuario aquí
+            usuario.setNombre(rs.getString("nombre"));
+            usuario.setApellido(rs.getString("apellido"));
+            usuario.setDni(rs.getInt("dni"));
+            usuario.setEmail(rs.getString("email"));
+            usuario.setEstado(rs.getBoolean("estado"));
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
         }
-        return usuario;
 
+        ps.close();
+        rs.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar el usuario: " + e.getMessage());
     }
+    return usuario;
+}
 
 // Actualizar (Modificar un usuario existente)
     public void modificarUsuario(Usuarios usuario) {

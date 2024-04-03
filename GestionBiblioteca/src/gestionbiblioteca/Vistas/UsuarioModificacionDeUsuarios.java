@@ -154,26 +154,26 @@ public class UsuarioModificacionDeUsuarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBModificarActionPerformed
-        try {
-            usuarios.setDni(Integer.parseInt(JTFDni.getText()));
-            usuarios.setApellido(JTFApellido.getText());
-            usuarios.setNombre(JTFNombre.getText());
-            usuarios.setEmail(JTFEmail.getText());
+  try {
+        // Obtener el ID del usuario desde el campo de texto
+        int id = Integer.parseInt(JTFCodigo.getText());
 
-            if (JRBEstado.isSelected() == true) {
-                usuarios.setEstado(true);
-            } else {
-                usuarios.setEstado(false);
-            }
-            usuariosData.modificarUsuario(usuarios);
-            limpiar();
+        // Crear un objeto Usuarios con los nuevos datos
+        Usuarios usuarioActualizado = new Usuarios();
+        usuarioActualizado.setIdUsuario(id); // Establecer el mismo ID
+        usuarioActualizado.setNombre(JTFNombre.getText());
+        usuarioActualizado.setApellido(JTFApellido.getText());
+        usuarioActualizado.setDni(Integer.parseInt(JTFDni.getText()));
+        usuarioActualizado.setEmail(JTFEmail.getText());
+        usuarioActualizado.setEstado(JRBEstado.isSelected());
 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, " El Dni debe ser un Numero. " + e.getMessage());
-            limpiar();
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(this, "No deje campos Vacios " + e.getMessage());
-        }
+        // Llamar al método para actualizar en la base de datos
+        usuariosData.modificarUsuario(usuarioActualizado);
+       
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Ingrese datos válidos: " + e.getMessage());
+    }
+
     }//GEN-LAST:event_JBModificarActionPerformed
 
     private void JBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSalirActionPerformed
@@ -181,12 +181,13 @@ public class UsuarioModificacionDeUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JBSalirActionPerformed
 
     private void JBBuscarPorIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBuscarPorIDActionPerformed
-
         try {
             int id = Integer.parseInt(JTFCodigo.getText());
             Usuarios usuarios = usuariosData.buscarUsuarioPorID(id);
 
             if (usuarios != null) {
+                // No establecer el ID aquí, ya que no se desea modificar
+                // JTFCodigo.setText(String.valueOf(usuarios.getIdUsuario()));
                 JTFApellido.setText(usuarios.getApellido());
                 JTFNombre.setText(usuarios.getNombre());
                 JTFDni.setText(String.valueOf(usuarios.getDni()));
@@ -194,7 +195,7 @@ public class UsuarioModificacionDeUsuarios extends javax.swing.JInternalFrame {
                 JRBEstado.setSelected(usuarios.getEstado());
 
             } else {
-                JOptionPane.showMessageDialog(this, "No se encontró un bombero con este ID.");
+                JOptionPane.showMessageDialog(this, "No se encontró un usuario con este ID.");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese un número válido para el ID: " + e.getMessage());
@@ -205,8 +206,8 @@ public class UsuarioModificacionDeUsuarios extends javax.swing.JInternalFrame {
 
         try {
             if (usuarios != null) {
-                String dniText = JTFDni.getText(); 
-                int dni = Integer.parseInt(dniText); 
+                String dniText = JTFDni.getText();
+                int dni = Integer.parseInt(dniText);
                 Usuarios usuarios = usuariosData.buscarUsuarioPorDNI(dni);
 
                 JTFCodigo.setText(String.valueOf(usuarios.getIdUsuario()));
@@ -246,6 +247,7 @@ public class UsuarioModificacionDeUsuarios extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void limpiar() {
+        JTFCodigo.setText("");
         JTFApellido.setText("");
         JTFDni.setText("");
         JTFNombre.setText("");
