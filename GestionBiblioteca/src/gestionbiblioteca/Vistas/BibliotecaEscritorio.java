@@ -28,6 +28,7 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
         JMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
 
         Fondito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gestionbiblioteca/Imagenes/tango y pluma.jpg"))); // NOI18N
 
@@ -44,6 +45,7 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
             .addComponent(Fondito, javax.swing.GroupLayout.PREFERRED_SIZE, 745, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setFocusable(false);
         jMenuBar1.setMaximumSize(new java.awt.Dimension(295, 32768));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(295, 23));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(295, 23));

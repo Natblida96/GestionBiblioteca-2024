@@ -1,4 +1,4 @@
-package gestionbiblioteca.AccesoADatos;
+package gestionbiblioteca.MainConexion;
 
 
 import java.sql.DriverManager;

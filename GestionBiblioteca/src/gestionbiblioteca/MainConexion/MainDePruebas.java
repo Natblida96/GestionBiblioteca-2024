@@ -1,6 +1,5 @@
-package gestionbiblioteca.Main;
+package gestionbiblioteca.MainConexion;
 
-import gestionbiblioteca.AccesoADatos.ConexionData;
 import gestionbiblioteca.AccesoADatos.LibrosData;
 import gestionbiblioteca.AccesoADatos.MultasData;
 import gestionbiblioteca.AccesoADatos.PrestamosData;

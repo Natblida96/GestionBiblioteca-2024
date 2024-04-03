@@ -1,5 +1,6 @@
 package gestionbiblioteca.AccesoADatos;
 
+import gestionbiblioteca.MainConexion.ConexionData;
 import gestionbiblioteca.Entidades.Multas;
 
 import java.sql.Connection;

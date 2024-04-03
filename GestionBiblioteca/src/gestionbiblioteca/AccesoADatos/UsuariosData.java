@@ -1,5 +1,6 @@
 package gestionbiblioteca.AccesoADatos;
 
+import gestionbiblioteca.MainConexion.ConexionData;
 import gestionbiblioteca.Entidades.Usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,15 +21,14 @@ public class UsuariosData {
 
 // Crear (Guardar un nuevo usuario)
     public void guardarUsuario(Usuarios usuario) {
-        String SQL = "INSERT INTO usuarios (nombre, apellido, dni, email, contrasenia, estado) VALUES (?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO usuarios (nombre, apellido, dni, email, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setInt(3, usuario.getDni());
             ps.setString(4, usuario.getEmail());
-//          ps.setString(5, usuario.getContrasenia());
-            ps.setBoolean(6, usuario.getEstado());
+            ps.setBoolean(5, usuario.getEstado());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -63,7 +63,6 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
@@ -80,16 +79,15 @@ public class UsuariosData {
 
 // Actualizar (Modificar un usuario existente)
     public void modificarUsuario(Usuarios usuario) {
-        String SQL = "UPDATE usuarios SET nombre=?, apellido=?, dni=?, email=?, contrasenia=?, estado=? WHERE idUsuario=?";
+        String SQL = "UPDATE usuarios SET nombre=?, apellido=?, dni=?, email=?, estado=? WHERE idUsuario=?";
         try {
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setInt(3, usuario.getDni());
             ps.setString(4, usuario.getEmail());
-//          ps.setString(5, usuario.getContrasenia());
-            ps.setBoolean(6, usuario.getEstado());
-            ps.setInt(7, usuario.getIdUsuario());
+            ps.setBoolean(5, usuario.getEstado());
+            ps.setInt(6, usuario.getIdUsuario());
 
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
@@ -143,8 +141,8 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
+           
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este DNI.");
             }
@@ -173,7 +171,6 @@ public class UsuariosData {
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
-//              usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
