@@ -48,32 +48,32 @@ public class UsuariosData {
     }
 
     public Usuarios buscarUsuarioPorID(int idUsuario) {
-    Usuarios usuario = null;
-    try {
-        String SQL = "SELECT * FROM usuarios WHERE idUsuario = ?";
-        PreparedStatement ps = con.prepareStatement(SQL);
-        ps.setInt(1, idUsuario);
-        ResultSet rs = ps.executeQuery();
+        Usuarios usuario = null;
+        try {
+            String SQL = "SELECT * FROM usuarios WHERE idUsuario = ?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, idUsuario);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            usuario = new Usuarios();
-            // No establecemos el ID del usuario aquí
-            usuario.setNombre(rs.getString("nombre"));
-            usuario.setApellido(rs.getString("apellido"));
-            usuario.setDni(rs.getInt("dni"));
-            usuario.setEmail(rs.getString("email"));
-            usuario.setEstado(rs.getBoolean("estado"));
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
+            if (rs.next()) {
+                usuario = new Usuarios();
+                // No establecemos el ID del usuario aquí
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setDni(rs.getInt("dni"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setEstado(rs.getBoolean("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró un usuario con este ID.");
+            }
+
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar el usuario: " + e.getMessage());
         }
-
-        ps.close();
-        rs.close();
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al buscar el usuario: " + e.getMessage());
+        return usuario;
     }
-    return usuario;
-}
 
 // Actualizar (Modificar un usuario existente)
     public void modificarUsuario(Usuarios usuario) {
@@ -140,7 +140,7 @@ public class UsuariosData {
                 usuario.setDni(rs.getInt("dni"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setEstado(rs.getBoolean("estado"));
-           
+
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró un usuario con este DNI.");
             }
@@ -181,7 +181,7 @@ public class UsuariosData {
         }
         return usuario;
     }
-        
+
 // Buscar usuarios por su Nombre en la base de datos.
     public Usuarios buscarUsuarioPorNombre(String nombreUsuario) {
         Usuarios usuario = null;
@@ -207,4 +207,68 @@ public class UsuariosData {
         }
         return usuario;
     }
+
+    public List<Usuarios> ObtenerUsuariosDisponibles() {
+        ArrayList<Usuarios> usuario = new ArrayList<>();
+
+        String SQL = "SELECT * FROM usuarios WHERE estado = 1";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(SQL);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Usuarios usuarios = new Usuarios();
+
+                usuarios.setIdUsuario(rs.getInt("idUsuario"));
+                usuarios.setNombre(rs.getString("nombre"));
+                usuarios.setApellido(rs.getString("apellido"));
+                usuarios.setDni(rs.getInt("dni"));
+                usuarios.setEmail(rs.getString("email"));
+                usuarios.setEstado(rs.getBoolean("estado"));
+
+                usuario.add(usuarios);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Usuarios" + ex.getMessage());
+        }
+        return usuario;
+    }
+
+    public List<Usuarios> ObtenerUsuariosNODisponibles() {
+        ArrayList<Usuarios> usuario = new ArrayList<>();
+
+        String SQL = "SELECT * FROM usuarios WHERE estado = 0";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(SQL);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Usuarios usuarios = new Usuarios();
+
+                usuarios.setIdUsuario(rs.getInt("idUsuario"));
+                usuarios.setNombre(rs.getString("nombre"));
+                usuarios.setApellido(rs.getString("apellido"));
+                usuarios.setDni(rs.getInt("dni"));
+                usuarios.setEmail(rs.getString("email"));
+                usuarios.setEstado(rs.getBoolean("estado"));
+                usuario.add(usuarios);
+
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Usuarios" + ex.getMessage());
+            
+        }
+        return usuario;
+       
+    }
+
 }

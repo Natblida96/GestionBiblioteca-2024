@@ -7,7 +7,6 @@ public class Usuarios {
     private String apellido;
     private int dni;
     private String email;
-//    private String contrasenia;
     private Boolean estado;
 
     public Usuarios() {
