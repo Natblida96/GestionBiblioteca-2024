@@ -98,6 +98,16 @@
             <Property name="text" type="java.lang.String" value="Prestamos"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Crear Nuevo Prestamo"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar Prestamo"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMILibrosPrestadosDevueltos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Libros Prestados / Devueltos"/>

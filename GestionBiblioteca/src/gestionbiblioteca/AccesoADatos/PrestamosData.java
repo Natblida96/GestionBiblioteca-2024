@@ -110,4 +110,66 @@ public class PrestamosData {
         }
     }
 
+//Listar Usuarios Disponibles
+    public List<Prestamos> ObtenerPrestamosDisponibles() {
+        ArrayList<Prestamos> prestamo = new ArrayList<>();
+
+        String SQL = "SELECT * FROM prestamos WHERE estadoDelPrestamo = 1";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(SQL);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Prestamos prestamos = new Prestamos();
+
+                prestamos.setIdLibroPresta(rs.getInt("idLibroPresta"));
+                prestamos.setIdUsuarioPresta(rs.getInt("idUsuarioPresta"));
+                prestamos.setIdUnicoDelPrestamo(rs.getInt("idUnicoDelPrestamo"));
+                prestamos.setFechaDelPrestamo(rs.getObject("fechaDelPrestamo", LocalDate.class)); //fechaDelPrestamo es de tipo LocalDate
+                prestamos.setFechaDeDevolucion(rs.getObject("fechaDeDevolucion", LocalDate.class));
+                prestamos.setEstadoDelPrestamo(rs.getBoolean("estadoDelPrestamo"));
+
+                prestamo.add(prestamos);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Prestamos" + ex.getMessage());
+        }
+        return prestamo;
+    }
+
+//Listar Prestamos NO Disponibles
+    public List<Prestamos> ObtenerPrestamosNODisponibles() {
+        ArrayList<Prestamos> prestamo = new ArrayList<>();
+
+        String SQL = "SELECT * FROM prestamos WHERE estadoDelPrestamo = 0";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(SQL);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Prestamos prestamos = new Prestamos();
+
+                prestamos.setIdLibroPresta(rs.getInt("idLibroPresta"));
+                prestamos.setIdUsuarioPresta(rs.getInt("idUsuarioPresta"));
+                prestamos.setIdUnicoDelPrestamo(rs.getInt("idUnicoDelPrestamo"));
+                prestamos.setFechaDelPrestamo(rs.getObject("fechaDelPrestamo", LocalDate.class)); //fechaDelPrestamo es de tipo LocalDate
+                prestamos.setFechaDeDevolucion(rs.getObject("fechaDeDevolucion", LocalDate.class));
+                prestamos.setEstadoDelPrestamo(rs.getBoolean("estadoDelPrestamo"));
+
+                prestamo.add(prestamos);
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Prestamos" + ex.getMessage());
+        }
+        return prestamo;
+    }
+
 }

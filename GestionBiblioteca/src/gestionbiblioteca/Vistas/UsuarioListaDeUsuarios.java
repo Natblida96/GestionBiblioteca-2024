@@ -84,10 +84,10 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(JBSalir)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(JRBUsuariosActivos)
                         .addComponent(JRBUsuariosInactivos)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,11 +96,11 @@ public class UsuarioListaDeUsuarios extends javax.swing.JInternalFrame {
                 .addComponent(JRBUsuariosActivos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JRBUsuariosInactivos)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JBSalir)
-                .addGap(15, 15, 15))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();

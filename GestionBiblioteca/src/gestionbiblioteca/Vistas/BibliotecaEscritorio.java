@@ -24,6 +24,8 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
         JMMultas = new javax.swing.JMenu();
         JMIUsuariosQueAdeudan = new javax.swing.JMenuItem();
         JMPrestamos = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         JMILibrosPrestadosDevueltos = new javax.swing.JMenuItem();
         JMSalir = new javax.swing.JMenu();
 
@@ -119,6 +121,12 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
         jMenuBar1.add(JMMultas);
 
         JMPrestamos.setText("Prestamos");
+
+        jMenuItem1.setText("Crear Nuevo Prestamo");
+        JMPrestamos.add(jMenuItem1);
+
+        jMenuItem2.setText("Modificar Prestamo");
+        JMPrestamos.add(jMenuItem2);
 
         JMILibrosPrestadosDevueltos.setText("Libros Prestados / Devueltos");
         JMILibrosPrestadosDevueltos.addActionListener(new java.awt.event.ActionListener() {
@@ -255,5 +263,7 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
     private javax.swing.JMenu JMSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

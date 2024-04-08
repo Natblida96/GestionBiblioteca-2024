@@ -208,6 +208,7 @@ public class UsuariosData {
         return usuario;
     }
 
+//Listar Usuarios Disponibles
     public List<Usuarios> ObtenerUsuariosDisponibles() {
         ArrayList<Usuarios> usuario = new ArrayList<>();
 
@@ -237,7 +238,8 @@ public class UsuariosData {
         }
         return usuario;
     }
-
+    
+//Listar Usuarios NO Disponibles
     public List<Usuarios> ObtenerUsuariosNODisponibles() {
         ArrayList<Usuarios> usuario = new ArrayList<>();
 
