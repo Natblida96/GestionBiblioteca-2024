@@ -18,14 +18,14 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
         JMIModificacionDeUsuarios = new javax.swing.JMenuItem();
         JMIListaDeUsuarios = new javax.swing.JMenuItem();
         JMLibros = new javax.swing.JMenu();
-        JMIListaDeLibros = new javax.swing.JMenuItem();
-        JMIModificarLibros = new javax.swing.JMenuItem();
         JMICargaBajaDeLibros = new javax.swing.JMenuItem();
+        JMIModificarLibros = new javax.swing.JMenuItem();
+        JMIListaDeLibros = new javax.swing.JMenuItem();
         JMMultas = new javax.swing.JMenu();
         JMIUsuariosQueAdeudan = new javax.swing.JMenuItem();
         JMPrestamos = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        JMICrearNuevoPrestamo = new javax.swing.JMenuItem();
+        JMIModificarPrestamo = new javax.swing.JMenuItem();
         JMILibrosPrestadosDevueltos = new javax.swing.JMenuItem();
         JMSalir = new javax.swing.JMenu();
 
@@ -82,13 +82,13 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
 
         JMLibros.setText("Libros");
 
-        JMIListaDeLibros.setText("Lista de Libros Cargados");
-        JMIListaDeLibros.addActionListener(new java.awt.event.ActionListener() {
+        JMICargaBajaDeLibros.setText("Carga de Libros");
+        JMICargaBajaDeLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMIListaDeLibrosActionPerformed(evt);
+                JMICargaBajaDeLibrosActionPerformed(evt);
             }
         });
-        JMLibros.add(JMIListaDeLibros);
+        JMLibros.add(JMICargaBajaDeLibros);
 
         JMIModificarLibros.setText("Modificar Libros Cargados");
         JMIModificarLibros.addActionListener(new java.awt.event.ActionListener() {
@@ -98,13 +98,13 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
         });
         JMLibros.add(JMIModificarLibros);
 
-        JMICargaBajaDeLibros.setText("Carga de Libros");
-        JMICargaBajaDeLibros.addActionListener(new java.awt.event.ActionListener() {
+        JMIListaDeLibros.setText("Lista de Libros Cargados");
+        JMIListaDeLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMICargaBajaDeLibrosActionPerformed(evt);
+                JMIListaDeLibrosActionPerformed(evt);
             }
         });
-        JMLibros.add(JMICargaBajaDeLibros);
+        JMLibros.add(JMIListaDeLibros);
 
         jMenuBar1.add(JMLibros);
 
@@ -122,11 +122,21 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
 
         JMPrestamos.setText("Prestamos");
 
-        jMenuItem1.setText("Crear Nuevo Prestamo");
-        JMPrestamos.add(jMenuItem1);
+        JMICrearNuevoPrestamo.setText("Crear Nuevo Prestamo");
+        JMICrearNuevoPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMICrearNuevoPrestamoActionPerformed(evt);
+            }
+        });
+        JMPrestamos.add(JMICrearNuevoPrestamo);
 
-        jMenuItem2.setText("Modificar Prestamo");
-        JMPrestamos.add(jMenuItem2);
+        JMIModificarPrestamo.setText("Modificar Prestamo");
+        JMIModificarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMIModificarPrestamoActionPerformed(evt);
+            }
+        });
+        JMPrestamos.add(JMIModificarPrestamo);
 
         JMILibrosPrestadosDevueltos.setText("Libros Prestados / Devueltos");
         JMILibrosPrestadosDevueltos.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +224,18 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JMSalirMouseClicked
 
+    private void JMICrearNuevoPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMICrearNuevoPrestamoActionPerformed
+        PrestamoCrearNuevoPrestamo pcnp = new PrestamoCrearNuevoPrestamo();
+        JDPEscritorio.add(pcnp);
+        pcnp.setVisible(true);
+    }//GEN-LAST:event_JMICrearNuevoPrestamoActionPerformed
+
+    private void JMIModificarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIModificarPrestamoActionPerformed
+        PrestamoModificarPrestamo pmp = new PrestamoModificarPrestamo();
+        JDPEscritorio.add(pmp);
+        pmp.setVisible(true);
+    }//GEN-LAST:event_JMIModificarPrestamoActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -251,11 +273,13 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
     private javax.swing.JDesktopPane JDPEscritorio;
     private javax.swing.JMenuItem JMICargaBajaDeLibros;
     private javax.swing.JMenuItem JMICargaYBajaUsuarios;
+    private javax.swing.JMenuItem JMICrearNuevoPrestamo;
     private javax.swing.JMenuItem JMILibrosPrestadosDevueltos;
     private javax.swing.JMenuItem JMIListaDeLibros;
     private javax.swing.JMenuItem JMIListaDeUsuarios;
     private javax.swing.JMenuItem JMIModificacionDeUsuarios;
     private javax.swing.JMenuItem JMIModificarLibros;
+    private javax.swing.JMenuItem JMIModificarPrestamo;
     private javax.swing.JMenuItem JMIUsuariosQueAdeudan;
     private javax.swing.JMenu JMLibros;
     private javax.swing.JMenu JMMultas;
@@ -263,7 +287,5 @@ public class BibliotecaEscritorio extends javax.swing.JFrame {
     private javax.swing.JMenu JMSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

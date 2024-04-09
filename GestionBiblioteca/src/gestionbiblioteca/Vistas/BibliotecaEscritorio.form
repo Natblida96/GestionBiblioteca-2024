@@ -52,12 +52,12 @@
             <Property name="text" type="java.lang.String" value="Libros"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="JMIListaDeLibros">
+            <MenuItem class="javax.swing.JMenuItem" name="JMICargaBajaDeLibros">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista de Libros Cargados"/>
+                <Property name="text" type="java.lang.String" value="Carga de Libros"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMIListaDeLibrosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMICargaBajaDeLibrosActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMIModificarLibros">
@@ -68,12 +68,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMIModificarLibrosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="JMICargaBajaDeLibros">
+            <MenuItem class="javax.swing.JMenuItem" name="JMIListaDeLibros">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Carga de Libros"/>
+                <Property name="text" type="java.lang.String" value="Lista de Libros Cargados"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMICargaBajaDeLibrosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMIListaDeLibrosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -98,15 +98,21 @@
             <Property name="text" type="java.lang.String" value="Prestamos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="JMICrearNuevoPrestamo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear Nuevo Prestamo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMICrearNuevoPrestamoActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="JMIModificarPrestamo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Prestamo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMIModificarPrestamoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMILibrosPrestadosDevueltos">
               <Properties>

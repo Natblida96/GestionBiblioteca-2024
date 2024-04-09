@@ -19,6 +19,12 @@ public class PrestamosLibrosPrestadosDevueltos extends javax.swing.JInternalFram
         initComponents();
         armarCabeceras();
         unirBotones();
+
+        
+       // prestamosD.establecerConexion(con);
+        
+        listarActivos = prestamosD.ObtenerPrestamosDisponibles();
+        listarinactivos = prestamosD.ObtenerPrestamosNODisponibles();
     }
 
     @SuppressWarnings("unchecked")

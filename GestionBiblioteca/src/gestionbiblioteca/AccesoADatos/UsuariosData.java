@@ -24,6 +24,7 @@ public class UsuariosData {
         String SQL = "INSERT INTO usuarios (nombre, apellido, dni, email, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setInt(3, usuario.getDni());

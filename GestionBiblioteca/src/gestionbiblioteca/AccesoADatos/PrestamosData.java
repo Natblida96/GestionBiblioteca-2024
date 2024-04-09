@@ -117,7 +117,8 @@ public class PrestamosData {
         String SQL = "SELECT * FROM prestamos WHERE estadoDelPrestamo = 1";
 
         try {
-            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            PreparedStatement ps = con.prepareStatement(SQL);// esta es la línea 120 de PrestamosData
 
             ResultSet rs = ps.executeQuery();
 
@@ -130,7 +131,6 @@ public class PrestamosData {
                 prestamos.setFechaDelPrestamo(rs.getObject("fechaDelPrestamo", LocalDate.class)); //fechaDelPrestamo es de tipo LocalDate
                 prestamos.setFechaDeDevolucion(rs.getObject("fechaDeDevolucion", LocalDate.class));
                 prestamos.setEstadoDelPrestamo(rs.getBoolean("estadoDelPrestamo"));
-
                 prestamo.add(prestamos);
             }
             ps.close();
@@ -138,7 +138,7 @@ public class PrestamosData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Prestamos" + ex.getMessage());
         }
-        return prestamo;
+        return prestamo; 
     }
 
 //Listar Prestamos NO Disponibles
