@@ -178,8 +178,8 @@ public class LibrosData {
         return librosEncontrados;
     }
 
-//Un método mostrar información sobre los libros disponibles    
-    public List<Libros> listarLibros() {
+//Un método para mostrar todos los libros disponibles    
+    public List<Libros> listarTodosLosLibros() {
         List<Libros> libros = new ArrayList<>();
         try {
             String SQL = "SELECT * FROM libros";

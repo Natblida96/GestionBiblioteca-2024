@@ -1,52 +1,51 @@
 package gestionbiblioteca.Vistas;
 
+import gestionbiblioteca.AccesoADatos.LibrosData;
 import gestionbiblioteca.AccesoADatos.PrestamosData;
 import gestionbiblioteca.AccesoADatos.UsuariosData;
+import gestionbiblioteca.Entidades.Libros;
 import gestionbiblioteca.Entidades.Prestamos;
 import gestionbiblioteca.Entidades.Usuarios;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class PrestamoCrearNuevoPrestamo extends javax.swing.JInternalFrame {
 
-    private PrestamosData prestamosData = new PrestamosData();
     private Prestamos prestamos = new Prestamos();
+    private PrestamosData prestamosData = new PrestamosData();
+
+    private Libros libros = new Libros();
+    private LibrosData librosData = new LibrosData();
 
     private Usuarios usuarios = new Usuarios();
     private UsuariosData usuariosData = new UsuariosData();
 
     public PrestamoCrearNuevoPrestamo() {
         initComponents();
-
+        cargarLibrosDisponibles();
+        cargarUsuarios();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JTFIDLibro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        JTFIDPrestamo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         JBGuardar = new javax.swing.JButton();
         JBSalir = new javax.swing.JButton();
         JRBEstadoDelPrestamo = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
-        JTFIDUsuario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        JTFNombreUsuario = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        JTFApellidoUsuario = new javax.swing.JTextField();
         JDCFechaDelPrestamo = new com.toedter.calendar.JDateChooser();
+        JCBLibros = new javax.swing.JComboBox<>();
+        JCBUsuario = new javax.swing.JComboBox<>();
 
         jLabel1.setText("Fecha del Prestamo");
 
-        jLabel2.setText(" ID del Prestamo");
-
-        jLabel4.setText(" ID del Libro");
+        jLabel4.setText("Seleccionar Libro");
 
         JBGuardar.setText("Guardar");
         JBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -64,82 +63,61 @@ public class PrestamoCrearNuevoPrestamo extends javax.swing.JInternalFrame {
 
         JRBEstadoDelPrestamo.setText("Estado del Prestamo");
 
-        jLabel6.setText(" ID del Usuario ");
-
-        jLabel7.setText("Nombre/s del Usuario ");
-
-        jLabel8.setText("Apellido/s del Usuario ");
+        jLabel7.setText("Seleccionar Usuario ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFIDLibro, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                        .addGap(148, 148, 148)
+                        .addComponent(JRBEstadoDelPrestamo))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JTFIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFApellidoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFIDPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(JBGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBSalir))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(JRBEstadoDelPrestamo)
-                        .addGap(126, 126, 126))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JDCFechaDelPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(52, 52, 52))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JCBUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JCBLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(JBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(JDCFechaDelPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(66, 66, 66)
+                                .addComponent(JBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(JCBLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(JCBUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JTFIDLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4))
                     .addComponent(JDCFechaDelPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(37, 37, 37)
+                .addComponent(JRBEstadoDelPrestamo)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(JTFIDPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JRBEstadoDelPrestamo))
-                .addGap(18, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(JTFIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(JTFNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(JTFApellidoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBGuardar)
-                    .addComponent(JBSalir))
-                .addGap(25, 25, 25))
+                    .addComponent(JBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
         );
 
         pack();
@@ -151,29 +129,53 @@ public class PrestamoCrearNuevoPrestamo extends javax.swing.JInternalFrame {
 
     private void JBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarActionPerformed
         try {
-            prestamos.setIdLibroPresta(Integer.parseInt(JTFIDLibro.getText()));
-            prestamos.setIdUnicoDelPrestamo(Integer.parseInt(JTFIDPrestamo.getText()));
-            prestamos.setIdUsuarioPresta(Integer.parseInt(JTFIDUsuario.getText()));
-            usuarios.setApellido(JTFIDPrestamo.getText());
-            usuarios.setNombre(JTFIDLibro.getText());
+            // Obtener el título del libro seleccionado en el JComboBox
+            String tituloLibro = (String) JCBLibros.getSelectedItem();
 
-            // Obtener la fecha del JDateChooser y convertirla a LocalDate
-            Date fechaPrestamo = JDCFechaDelPrestamo.getDate();
-            LocalDate fechaPrestamoLocalDate = fechaPrestamo.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            prestamos.setFechaDelPrestamo(fechaPrestamoLocalDate);
-
-            if (JRBEstadoDelPrestamo.isSelected()) {
-                prestamos.setEstadoDelPrestamo(true);
-            } else {
-                prestamos.setEstadoDelPrestamo(false);
+            // Buscar el libro en la lista de libros disponibles por su título
+            Libros libroSeleccionado = null;
+            for (Libros libro : librosData.listarTodosLosLibros()) {
+                if (libro.getTitulo().equals(tituloLibro)) {
+                    libroSeleccionado = libro;
+                    break;
+                }
             }
-            usuariosData.guardarUsuario(usuarios);
-            limpiar();
+
+            
+            if (libroSeleccionado != null) {
+                // Configurar el préstamo con el libro seleccionado
+                prestamos.setIdLibroPresta(libroSeleccionado.getIdLibro());
+
+                // Obtener el usuario seleccionado del JComboBox
+                String nombreCompletoUsuario = (String) JCBUsuario.getSelectedItem();
+                String[] partesNombre = nombreCompletoUsuario.split(" ");
+                String nombreUsuario = partesNombre[0];
+                String apellidoUsuario = partesNombre[1];
+
+                // Configurar los datos del usuario
+                usuarios.setNombre(nombreUsuario);
+                usuarios.setApellido(apellidoUsuario);
+
+                // Obtener la fecha del JDateChooser y convertirla a LocalDate
+                Date fechaPrestamo = JDCFechaDelPrestamo.getDate();
+                LocalDate fechaPrestamoLocalDate = fechaPrestamo.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                prestamos.setFechaDelPrestamo(fechaPrestamoLocalDate);
+
+                // Configurar el estado del préstamo
+                prestamos.setEstadoDelPrestamo(JRBEstadoDelPrestamo.isSelected());
+
+                // Guardar el préstamo y el usuario
+                usuariosData.guardarUsuarioModificadoJCBox(usuarios);// ACA LO GUARDA!!
+                prestamosData.guardarPrestamo(prestamos);
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione un libro válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, " El Dni debe ser un Numero. " + e.getMessage());
+            JOptionPane.showMessageDialog(this, " El DNI debe ser un número. " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             limpiar();
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(this, "No deje campos Vacios " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "No deje campos vacíos. " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }//GEN-LAST:event_JBGuardarActionPerformed
@@ -182,29 +184,50 @@ public class PrestamoCrearNuevoPrestamo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBGuardar;
     private javax.swing.JButton JBSalir;
+    private javax.swing.JComboBox<String> JCBLibros;
+    private javax.swing.JComboBox<String> JCBUsuario;
     private com.toedter.calendar.JDateChooser JDCFechaDelPrestamo;
     private javax.swing.JRadioButton JRBEstadoDelPrestamo;
-    private javax.swing.JTextField JTFApellidoUsuario;
-    private javax.swing.JTextField JTFIDLibro;
-    private javax.swing.JTextField JTFIDPrestamo;
-    private javax.swing.JTextField JTFIDUsuario;
-    private javax.swing.JTextField JTFNombreUsuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 
     public void limpiar() {
-        JTFNombreUsuario.setText("");
-        JTFApellidoUsuario.setText("");
-        JTFIDLibro.setText("");
-        JTFIDPrestamo.setText("");
-        JTFIDUsuario.setText("");
+//        JTFNombreUsuario.setText("");
+//        JTFApellidoUsuario.setText("");    
+//        JTFNombreLibro.setText("");
         JRBEstadoDelPrestamo.setSelected(false);
+        JDCFechaDelPrestamo.setDate(null);
 
     }
 
+    private void cargarLibrosDisponibles() {
+        // Obtener la lista de libros disponibles
+        List<Libros> librosDisponibles = librosData.listarTodosLosLibros();
+
+        // Limpiar el JComboBox
+        JCBLibros.removeAllItems();
+
+        // Agregar los títulos de los libros al JComboBox
+        for (Libros libro : librosDisponibles) {
+            JCBLibros.addItem(libro.getTitulo());
+        }
+    }
+
+    private void cargarUsuarios() {
+        List<Usuarios> listaUsuarios = usuariosData.ObtenerUsuariosDisponibles();
+        for (Usuarios usuario : listaUsuarios) {
+            JCBUsuario.addItem(usuario.getNombre() + " " + usuario.getApellido());
+        }
+    }
+
+//
+//    private void cargarUsuarios() {
+//        List<Usuarios> listaUsuarios = usuariosData.ObtenerUsuariosDisponibles();
+//        for (Usuarios usuario : listaUsuarios) {
+//            JCBUsuario.addItem(usuario.getNombre() + " " + usuario.getApellido() +" " + usuario.getDni() + " " + usuario.getEmail());
+//        }
+//
+//    }
 }

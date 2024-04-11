@@ -24,12 +24,19 @@ public class UsuariosData {
         String SQL = "INSERT INTO usuarios (nombre, apellido, dni, email, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            
+
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setInt(3, usuario.getDni());
             ps.setString(4, usuario.getEmail());
-            ps.setBoolean(5, usuario.getEstado());
+
+            // Verificar si el estado es null y asignar un valor predeterminado si es así
+            Boolean estado = usuario.getEstado();
+            if (estado != null) {
+                ps.setBoolean(5, estado);
+            } else {
+                ps.setBoolean(5, false); // O cualquier otro valor predeterminado que desees
+            }
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -45,7 +52,6 @@ public class UsuariosData {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar el usuario: " + e.getMessage());
         }
-
     }
 
     public Usuarios buscarUsuarioPorID(int idUsuario) {
@@ -239,7 +245,7 @@ public class UsuariosData {
         }
         return usuario;
     }
-    
+
 //Listar Usuarios NO Disponibles
     public List<Usuarios> ObtenerUsuariosNODisponibles() {
         ArrayList<Usuarios> usuario = new ArrayList<>();
@@ -266,12 +272,55 @@ public class UsuariosData {
             ps.close();
             rs.close();
         } catch (SQLException ex) {
-            
+
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Usuarios" + ex.getMessage());
-            
+
         }
         return usuario;
-       
+
     }
 
+    
+    
+    
+    
+    
+    
+    // Crear (Guardar un nuevo usuario)
+    public void guardarUsuarioModificadoJCBox(Usuarios usuario) {
+        String SQL = "INSERT INTO usuarios (nombre, apellido, dni, email, estado) VALUES (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getApellido());
+
+            // Verificar si el estado es null y asignar un valor predeterminado si es así
+            Boolean estado = usuario.getEstado();
+            if (estado != null) {
+                ps.setBoolean(5, estado);
+            } else {
+                ps.setBoolean(5, false); // O cualquier otro valor predeterminado que desees
+            }
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+            if (rs.next()) {
+                usuario.setIdUsuario(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente");
+            }
+
+            rs.close();
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar el usuario: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
 }

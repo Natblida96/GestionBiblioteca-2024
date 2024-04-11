@@ -20,7 +20,7 @@ public class PrestamosData {
     }
 
 // Crear (Guardar un nuevo Prestamo)
-    public void agregarPrestamo(Prestamos prestamo) {
+    public void guardarPrestamo(Prestamos prestamo) {
         String sql = "INSERT INTO prestamos (idLibroPresta, idUsuarioPresta, fechaDelPrestamo, fechaDeDevolucion, estadoDelPrestamo) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -172,4 +172,20 @@ public class PrestamosData {
         return prestamo;
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
 }
