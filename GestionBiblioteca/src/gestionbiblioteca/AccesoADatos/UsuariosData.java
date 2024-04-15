@@ -280,15 +280,9 @@ public class UsuariosData {
 
     }
 
-    
-    
-    
-    
-    
-    
-    // Crear (Guardar un nuevo usuario)
+// Crear (Guardar un nuevo usuario) Modificado para el JComboBox
     public void guardarUsuarioModificadoJCBox(Usuarios usuario) {
-        String SQL = "INSERT INTO usuarios (nombre, apellido, dni, email, estado) VALUES (?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO usuarios (nombre, apellido, estado) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
@@ -298,9 +292,9 @@ public class UsuariosData {
             // Verificar si el estado es null y asignar un valor predeterminado si es así
             Boolean estado = usuario.getEstado();
             if (estado != null) {
-                ps.setBoolean(5, estado);
+                ps.setBoolean(3, estado);
             } else {
-                ps.setBoolean(5, false); // O cualquier otro valor predeterminado que desees
+                ps.setBoolean(3, false); // O cualquier otro valor predeterminado que desees
             }
 
             ps.executeUpdate();
@@ -318,9 +312,5 @@ public class UsuariosData {
             JOptionPane.showMessageDialog(null, "Error al guardar el usuario: " + e.getMessage());
         }
     }
-    
-    
-    
-    
-    
+
 }

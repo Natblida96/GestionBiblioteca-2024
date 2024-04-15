@@ -48,6 +48,11 @@ public class LibrosModificarLibrosCargados extends javax.swing.JInternalFrame {
         JBModificar.setText("Modificar");
 
         JBSalir.setText("Salir");
+        JBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBSalirActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setText("Estado");
 
@@ -128,6 +133,10 @@ public class LibrosModificarLibrosCargados extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_JBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

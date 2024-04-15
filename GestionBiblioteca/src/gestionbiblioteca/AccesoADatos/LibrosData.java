@@ -179,7 +179,7 @@ public class LibrosData {
     }
 
 //Un método para mostrar todos los libros disponibles    
-    public List<Libros> listarTodosLosLibros() {
+    public List<Libros> listarTodosLosLibrosDisponibles() {
         List<Libros> libros = new ArrayList<>();
         try {
             String SQL = "SELECT * FROM libros";
@@ -206,5 +206,7 @@ public class LibrosData {
         return libros;
     }
 
+    
+    
     
 }
